@@ -1,7 +1,6 @@
 package com.mytests.springboot.springjsonpathtest0;
 
-import com.mytests.springboot.springjsonpathtest0.forMockTest.Person;
-import com.mytests.springboot.springjsonpathtest0.forMockTest.PersonService;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,71 +24,8 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.MOCK, classes={ SpringJsonpathTest0Application.class })
 public class SpringJsonpathTest0ApplicationTests {
-    private MockMvc mockMvc;
-
-    @Autowired
-    private WebApplicationContext webApplicationContext;
-
-    @Before
-    public void setUp() {
-        this.mockMvc = webAppContextSetup(webApplicationContext).build();
-    }
-    @MockBean
-    PersonService service;
-
-    @Test
-    public void shouldCreatePersonJson() throws Exception {
-
-        when(service.savePerson(any(Person.class))).thenReturn("100");
-
-        mockMvc.perform(post("/createPerson")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        //.contentType("application/json")
-                        .content("{ \"name\": \"vasya\", \"familyName\": \"petrov\", \"age\": 25 }")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(header().string("pid", "/person/100"))
-                .andExpect(jsonPath("$.name").value("vasya"))
-                .andExpect(jsonPath("$.familyName").value("petrov"))
-                .andExpect(jsonPath("$.age").value(25));
-    }
-    @Test
-    public void shouldCreatePersonXML() throws Exception {
-
-        when(service.savePerson(any(Person.class))).thenReturn("100");
-
-        String xml = "<person>\n" +
-                "    <name>vasya</name>\n" +
-                "    <familyName>petrov</familyName>\n" +
-                "    <age>25</age>\n" +
-                "</person>";
-        mockMvc.perform(post("/createPerson")
-                        .contentType(MediaType.APPLICATION_XML)
-                        //.contentType("application/xml")
-                        //.content(xml.getBytes(StandardCharsets.UTF_8))
-                        .content(xml)
-                        .accept(MediaType.APPLICATION_XML))
-                .andExpect(status().isCreated())
-                .andExpect(content().contentType("application/xml;charset=UTF-8"))
-                .andExpect(header().string("pid", "/person/100"))
-                .andExpect(xpath("/Person/name").string("vasya"))
-                .andExpect(content().string("<Person><id/><name>vasya</name><familyName>petrov</familyName><age>25</age></Person>"))
-                .andExpect(content().xml("<Person><id/><name>vasya</name><familyName>petrov</familyName><age>25</age></Person>"));
-
-    }
-
-
-    /*@Test
-    public void small() throws Exception{
-        mockMvc.perform(post("/createNewCompany")
-                .contentType(MediaType.APPLICATION_XML)
-                .content("<company>\n" +
-                        "    \n" +
-                        "</company>")
-                .accept(MediaType.APPLICATION_XML))
-                .andExpect(status().isCreated());
-    }
+    
+    /*
     @Test
     public void shouldCreateCompanyOnPost() throws Exception {
         mockMvc.perform(post("/createNewCompany")
