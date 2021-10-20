@@ -1,0 +1,48 @@
+GET http://localhost:8080/get-company-details
+
+<> 2021-02-16T134955.200.txt
+
+###
+
+GET http://localhost:8080/girls
+
+<> 2021-01-20T194813.200.json
+
+###
+
+GET http://localhost:8080/girls
+
+<> 2021-01-20T194727.200.json
+
+###
+
+GET http://localhost:8080/get-company-details
+
+<> 2021-01-20T192641.200.txt
+
+###
+
+GET http://localhost:8080/get-company-details
+
+<> 2021-01-20T192329.500.json
+
+###
+
+GET http://localhost:8080/get-company-details
+
+<> 2021-01-20T192250.500.json
+
+###
+
+GET http://localhost:8080/get-company-details
+
+<> 2021-01-20T192110.500.json
+
+###
+
+GET http://localhost:8080/get-company-details
+
+<> 2021-01-20T191425.500.json
+
+###
+

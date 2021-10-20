@@ -1,0 +1,7 @@
+{
+  "timestamp": "2021-01-20T16:21:10.590+00:00",
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "",
+  "path": "/get-company-details"
+}
